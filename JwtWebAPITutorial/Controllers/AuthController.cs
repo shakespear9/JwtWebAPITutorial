@@ -21,7 +21,7 @@ namespace JwtWebAPITutorial.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
+        public  ActionResult<User> Register(UserDto request)
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
@@ -34,7 +34,7 @@ namespace JwtWebAPITutorial.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto request)
+        public ActionResult<string> Login(UserDto request)
         {
             if (request.Username != user.Username)
             {
@@ -72,7 +72,8 @@ namespace JwtWebAPITutorial.Controllers
         {
             List<Claim> claims = new List<Claim>
              {
-                 new Claim(ClaimTypes.Name, user.Username)
+                 new Claim(ClaimTypes.Name, user.Username),
+                 new Claim(ClaimTypes.Role, "Admin")
              };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
