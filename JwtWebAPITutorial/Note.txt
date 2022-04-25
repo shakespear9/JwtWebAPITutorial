@@ -1,0 +1,1 @@
+﻿Claims คือ ใช้สำหรับอธิบายว่า user นั้น authen แล้วโดย claims จะทำการเก็บ information ต่าง ๆ ใน JWT Token เช่น username, email, birthdate เป็นต้น
